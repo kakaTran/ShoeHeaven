@@ -1,0 +1,858 @@
+.wrapper{
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+}
+h2 {
+  text-align: center;
+  font-size: revert;
+}
+.h2category{
+  text-align: left;
+  margin-left: 20px;
+}
+.main-admincp{
+    border: 1px #000;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+.menu-admincp {
+  border: 1px solid #000;
+  width: 15%;
+  height: 700px;
+  float: left;
+  background: #6c757d;
+  margin-left: 1px;
+  border-radius: 5px;
+  padding-top: 30px; 
+}
+
+.menu-admincp ul {
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  width: 90%;
+
+}
+
+.menu-admincp ul li {
+  border: 1px solid transparent; 
+  padding: 10px;
+  text-align: left;
+  margin-top: 15px;
+  border-radius: 5px;
+  background: #d9d9dd;
+  transition: all 0.3s ease; 
+}
+
+.menu-admincp ul li:hover {
+  background: #fff;
+  border-color: #f5f5f5; /* Hiển thị đường viền khi hover */
+}
+
+.menu-admincp ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.menu-admincp ul li.active a {
+  background-color: #007bff;
+  color: white;
+}
+.mini-product {
+  font-size: 14px; 
+  padding: 5px 10px; 
+}
+li.mini-product {
+  width: 70%;
+  margin-left: 10px;
+}
+
+
+/* CSS cho phần table */
+.add-category-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.add-category-table th,
+.add-category-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.add-category-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+/* CSS cho input và button */
+.add-category-table input[type="text"],
+.add-category-table input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.add-category-table button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.add-category-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+/* CSS cho đường cắt ngang */
+.divider {
+  margin: 20px auto;
+  width: 90%;
+  border-top: 1px solid #000;
+}
+
+/* CSS cho tiêu đề */
+.h2category {
+  text-align: center;
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
+/* CSS cho phần "List Category" */
+.category-heading {
+  font-family: Arial, sans-serif; /* Font chữ */
+  font-size: 20px; /* Kích thước font chữ */
+  font-weight: bold; /* Độ đậm của font chữ */
+  color: #333; /* Màu chữ */
+  margin-bottom: 10px; /* Khoảng cách với các phần khác */
+  margin-left: 50px;
+}
+/* CSS cho table */
+.category-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.category-table th,
+.category-table td {
+  border: 1px solid #d9d9dd;
+  padding: 8px;
+  text-align: left;
+
+}
+.category-table th {
+  background-color: #f2f2f2;
+}
+/* CSS cho liên kết */
+.category-link {
+  color: #007bff;
+  text-decoration: none;
+}
+.category-link:hover {
+  text-decoration: underline;
+}
+.submenu {
+  display: none; /* Ẩn menu con ban đầu */
+}
+
+.submenu.active {
+  display: block; /* Hiển thị menu con khi có class active */
+}
+
+.main-content{
+    border: 1px solid #000;
+    width: 84%;
+    height: auto;
+    float: right;
+    background: #f5f5f5;
+    margin-right: 1px;
+    padding-bottom: 50px;
+}
+/*------------------------size----------------------*/
+.h2size {
+  font-size: 24px;
+  color: #333;
+}
+
+.add-size-table {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.add-size-table th {
+  text-align: left;
+}
+
+.add-size-table input[type="text"],
+.add-size-table input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-size-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-size-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* CSS cho phần danh sách kích thước */
+.size-heading {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.size-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.size-table th, .size-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.size-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.size-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.size-table tr:hover {
+  background-color: #ddd;
+}
+
+.size-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.size-link:hover {
+  text-decoration: underline;
+}
+/* CSS cho phần cập nhật kích thước */
+.update-size-table {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.update-size-table th {
+  text-align: left;
+}
+
+.update-size-table input[type="text"]{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.update-size-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.update-size-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+/*---------------------------color--------------------------------*/
+
+/* Tiêu đề */
+.h2color {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Bảng thêm màu */
+.add-color-table {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.add-color-table th {
+  text-align: left;
+}
+
+.add-color-table input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-color-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-color-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Tiêu đề danh sách màu */
+.color-heading {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Bảng danh sách màu */
+.color-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.color-table th,
+.color-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.color-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.color-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.color-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Liên kết */
+.color-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.color-link:hover {
+  text-decoration: underline;
+}
+
+/* Bảng cập nhật màu */
+.update-color-table {
+  width: 50%;
+  margin: 20px auto;
+}
+
+.update-color-table th {
+  text-align: left;
+}
+
+.update-color-table input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.update-color-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.update-color-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* ----------------------------------Prosucts----------------------------------------*/
+
+.h2product {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.add-product-table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.add-product-table th,
+.add-product-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.add-product-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.add-product-table input[type="text"],
+.add-product-table input[type="number"],
+.add-product-table textarea,
+.add-product-table select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-product-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-product-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* CSS cho phần danh sách sản phẩm */
+.product-heading {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.product-table {
+  width: 100%;
+  margin: 5px auto;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+td.description-list {
+  max-width: 400px; /* Sử dụng max-width thay vì width */
+  overflow: hidden;
+  white-space: nowrap; /* Dùng nowrap để ngăn text xuống dòng */
+  text-overflow: ellipsis; /* Sử dụng ellipsis để hiển thị dấu ba chấm */
+}
+.product-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.product-table tr:hover {
+  background-color: #ddd;
+}
+
+.product-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+/* CSS cho bảng cập nhật sản phẩm */
+.update-product-table {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.update-product-table th {
+  text-align: left;
+}
+
+.update-product-table input[type="text"],
+.update-product-table input[type="number"],
+.update-product-table textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.update-product-table button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.update-product-table button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/*-----------------------------------images---------------------------------------*/
+/* Title Styles */
+.h2image {
+  font-size: 24px;
+  color: #333;
+  text-align: center; /* Center align the heading */
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+  max-width: 500px; /* Set a maximum width for responsiveness */
+  margin: 20px auto; /* Add margin with auto-centering */
+  padding: 20px; /* Add some padding inside the form */
+  border: 1px solid #ddd; /* Create a subtle border */
+  border-radius: 4px; /* Add rounded corners */
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Make labels stand out */
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px; /* Adjust spacing between elements */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button[type="submit"] {
+  background-color: #4CAF50; /* Green color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right; /* Align button to the right */
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Image Preview Styles */
+#imagePreview {
+  margin-top: 10px; /* Add spacing after image selection */
+  border: 1px solid #ddd;
+  padding: 10px;
+  max-width: 200px; /* Limit preview image width */
+  margin: 0 auto; /* Center the preview image horizontally */
+}
+
+#imagePreview img {
+  max-width: 100%; /* Ensure image scales within preview area */
+}
+
+/* Image List/Table Styles */
+.image-heading {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+  text-align: center; /* Center align the heading */
+}
+
+.image-table {
+  width: 100%; /* Make table fill available width */
+  margin: 0 auto; /* Center the table horizontally */
+  border-collapse: collapse;
+}
+
+.image-table th, .image-table td {
+  border: 1px solid #ddd;
+  padding: 10px; /* Increase cell padding for better readability */
+}
+
+.image-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.image-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.image-table tr:hover {
+  background-color: #ddd;
+}
+
+.image-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.image-link:hover {
+  text-decoration: underline;
+}
+/*-------------------------product_variant----------------------*/
+.add-product_variant-table {
+  border-collapse: collapse;
+  width: 98%; /* Adjust width as needed */
+  margin: auto;
+}
+
+.add-product_variant-table th,
+.add-product_variant-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left; /* Adjust alignment if needed */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.divider {
+  margin-top: 20px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.product_variant-table {
+  border-collapse: collapse;
+  width: 100%; /* Adjust width as needed */
+  margin: auto;
+}
+.product_variant-table th,
+.product_variant-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.product_variant-link {
+  color: #1976D2; /* Blue color */
+  text-decoration: none;
+}
+
+.product_variant-link:hover {
+  text-decoration: underline;
+}
+
+.update-product_variant-table {
+  border-collapse: collapse;
+  width: 98%; /* Adjust width as needed */
+  margin: auto;
+}
+
+.update-product_variant-table th,
+.update-product_variant-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.update-product_variant-table td:first-child { /* Style the first column (labels) */
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/*---------------------Product_Detail------------------------*/
+.add-product_detail-table {
+  border-collapse: collapse;
+  width: 98%; /* Adjust width as needed */
+  margin: auto;
+}
+
+.add-product_detail-table th,
+.add-product_detail-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+select, input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.divider {
+  margin-top: 20px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.product_detail-table {
+  border-collapse: collapse;
+  width: 100%; /* Adjust width as needed */
+  margin: auto;
+}
+
+.product_detail-table th,
+.product_detail-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.product_detail-link {
+  color: #1976D2; /* Blue color */
+  text-decoration: none;
+}
+
+.product_detail-link:hover {
+  text-decoration: underline;
+}
+.update-product_detail-table {
+  border-collapse: collapse;
+  width: 98%; /* Adjust width as needed */
+  margin: auto;
+}
+
+.update-product_detail-table th,
+.update-product_detail-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.update-product_detail-table td:first-child { /* Style the first column (product name) */
+  font-weight: bold;
+  /* Make it read-only visually */
+  background-color: #f2f2f2;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ---------------------------------dashboard-------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clear{
+    clear: both;
+}
