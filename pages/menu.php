@@ -3,7 +3,6 @@ session_start();
 $sql_categories = "SELECT id, name FROM category";
 $result_categories = mysqli_query($mysqli, $sql_categories);
 ?>
-
 <div id="menu">
     <div class="listmenu">
         <li><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
@@ -40,7 +39,6 @@ $result_categories = mysqli_query($mysqli, $sql_categories);
     </div>
 </div>
 <div class="clear"></div>
-
 <script>
     window.addEventListener('scroll', function () {
         var menu = document.getElementById('menu');
@@ -50,7 +48,6 @@ $result_categories = mysqli_query($mysqli, $sql_categories);
             menu.classList.remove('sticky');
         }
     });
-
     function toggleUserMenu() {
         var userMenu = document.getElementById("user-menu");
         if (userMenu.style.display === "none") {
@@ -59,15 +56,8 @@ $result_categories = mysqli_query($mysqli, $sql_categories);
             userMenu.style.display = "none";
         }
     }
-
     document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Ngăn chặn việc gửi form mặc định
-
-    // Lấy từ khóa tìm kiếm từ input
+    event.preventDefault(); 
     var searchKeyword = document.getElementById("searchInput").value;
-
-    // Gửi yêu cầu tìm kiếm tới máy chủ (ở đây bạn có thể sử dụng AJAX hoặc Fetch API)
-
-    // Hiển thị kết quả tìm kiếm (ở đây bạn có thể sử dụng kết quả trả về từ máy chủ)
 });
 </script>
