@@ -34,7 +34,7 @@
         } elseif($tam=="contact"){
             include("main/contact.php");
         } elseif($tam=="profile"){
-            include("main/profile.php");
+            include("main/profile/profile.php");
         } elseif($tam=="logout"){
             include("main/login/logout.php");
         } elseif($tam=="detail"){

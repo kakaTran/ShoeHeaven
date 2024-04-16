@@ -1,4 +1,6 @@
 <?php
+    global $mysqli; // set $mysql thanh global de o dau minh cung co the goi no
+
     $mysqli = new mysqli("localhost","root","","shoeheaven");
 
     // Check connection

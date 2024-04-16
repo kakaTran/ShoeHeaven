@@ -94,6 +94,8 @@ $result_colors = mysqli_query($mysqli, $sql_colors);
         <div class="product-price-detail">Price: <span id="price">$
                 <?php echo $price; ?>
             </span></div>
+            <!-- lấy 2 file a vừa gởi zalo copy vô đây -->
+            <form action="pages/main/add-to-cart.php" method="post">
         <div class="product-options-detail">
             <select class="variant form-select w-100" name="size" id="size">
                 <option value="">Choose size</option>
@@ -112,12 +114,14 @@ $result_colors = mysqli_query($mysqli, $sql_colors);
                 }
                 ?>
             </select>
+            <input type="hidden" name="variant_id" id="variant">
             <input class="form-control w-100" type="number" name="quantity" value="1" min="1">
         </div>
         <div class="action-buttons-detail">
-            <button style="display: none;" id="addToCart" onclick="addToCart()">Add to Cart</button>
+            <button style="display: none;" id="addToCart" type="submit">Add to Cart</button>
             <button>Buy Now</button>
         </div>
+        </form>
         <hr>
         <div class="product-details">
             <h3 class="h2-detail">Product Details</h3>

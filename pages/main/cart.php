@@ -1,3 +1,8 @@
+<?php include "cart-function.php" ?>
+<?php
+$products = getCartItems();
+?>
+
 <div class="shoppingcart">
   <div class="headercart">
     <h1 class="namecart">Shopping Cart</h1>
@@ -15,20 +20,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><input type="checkbox" class="product-checkbox"></td>
-            <td>
-              <div class="product-info-cart">
-                <img src="images/product01.png" alt="Adidas Running Shoes">
-                <p>Adidas Running Shoes for Men/39/Black</p>
-              </div>
-            </td>
-            <td>$109.99</td>
-            <td>
-              <input type="number" value="1" min="1" onchange="updateTotal(this)">
-            </td>
-            <td id="total"> $109.99</td>
-          </tr>
+          <?php
+          if (count($products) > 0) {
+            foreach ($products as $product) {
+              ?>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="product-info-cart">
+                    <img src="admincp/modules/images/uploads/<?php echo $product['product_image']; ?>"
+                      alt="<?php echo $product['product_name']; ?>">
+                    <p><?php echo $product['product_name']; ?> for
+                      <?php echo isset($product['gender']) ? $product['gender'] : 'Unisex'; ?>/<?php echo $product['size_name']; ?>/<?php echo $product['color_name']; ?>
+                    </p>
+                  </div>
+                </td>
+                <td>$<?php echo $product['product_price']; ?></td>
+                <td>
+                  <input type="number"
+                    value="<?php echo isset($_SESSION['carts'][$product['variant_id']]['quantity']) ? $_SESSION['carts'][$product['variant_id']]['quantity'] : 1; ?>"
+                    min="1" onchange="updateTotal(this)">
+                </td>
+                <td id="total_<?php echo $product['variant_id']; ?>">
+                  $<?php echo isset($_SESSION['carts'][$product['variant_id']]['quantity']) ? $_SESSION['carts'][$product['variant_id']]['quantity'] * $product['product_price'] : $product['product_price']; ?>
+                </td>
+              </tr>
+              <?php
+            }
+          } else {
+            echo "<tr><td colspan='5'>Không có sản phẩm nào.</td></tr>";
+          }
+          ?>
+
         </tbody>
       </table>
       <span class="total-price">Total price: $109.99</span>
@@ -39,7 +62,6 @@
     <a href="index.php?manage=payment" class="btn btn-success">Process to Checkout</a>
   </div>
 </div>
-
 <script>
   function updateTotal(quantityInput) {
     const priceCell = quantityInput.parentElement.previousElementSibling;
@@ -74,10 +96,4 @@
 
   // Gọi hàm calculateTotalPrice khi thêm/xóa sản phẩm
   calculateTotalPrice();
-
-  var productName = localStorage.getItem('productName');
-  var productPrice = localStorage.getItem('productPrice');
-  var productColor = localStorage.getItem('productColor');
-  var productSize = localStorage.getItem('productSize');
-  var productImage = localStorage.getItem('productImage');
 </script>

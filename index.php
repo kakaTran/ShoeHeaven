@@ -47,6 +47,8 @@
                 if(data)
                     {
                         $('#price').html(data.price)
+                        $('#variant').val(data.id) 
+                        // lấy id của variant đưa vào ô input hiđen có id là variant (khác với cái class kia nha) (.variant != #variant)
                         $('#addToCart').show()
                     }
                 }
