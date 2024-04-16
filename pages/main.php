@@ -39,6 +39,8 @@
             include("main/login/logout.php");
         } elseif($tam=="detail"){
             include("main/detail.php");
+        } elseif($tam=="search"){
+            include("main/search.php");
 
         }else{
             include("main/index.php");

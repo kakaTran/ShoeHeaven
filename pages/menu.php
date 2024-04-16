@@ -30,9 +30,12 @@ $result_categories = mysqli_query($mysqli, $sql_categories);
             <li><a href="index.php?manage=user" id="user-icon"><i class="fa-solid fa-user"></i></a></li>
         <?php endif; ?>
         <li><a href="index.php?manage=cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
-        <li><input style="height: 40px;" placeholder="Search" type="text" name="search"><i
-                class="fa-solid fa-magnifying-glass"></i>
-                <div id="search-suggestions"></div>
+        <li>
+            <form id="searchForm">
+                <input style="height: 40px;" placeholder="Search" type="text" name="search" id="searchInput">
+                <a href="index.php?manage=search"></a><i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+            <div id="search-suggestions"></div>
         </li>
     </div>
 </div>
@@ -57,28 +60,14 @@ $result_categories = mysqli_query($mysqli, $sql_categories);
         }
     }
 
-    // Lắng nghe sự kiện nhập liệu từ ô tìm kiếm
-    document.querySelector('.search-input').addEventListener('input', function () {
-        // Lấy giá trị nhập liệu từ ô tìm kiếm
-        var searchInput = this.value;
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Ngăn chặn việc gửi form mặc định
 
-        // Kiểm tra xem ô tìm kiếm có rỗng không
-        if (searchInput.trim() !== '') {
-            // Tạo yêu cầu AJAX để gửi dữ liệu tìm kiếm đến máy chủ
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Hiển thị kết quả gợi ý trong phần tử #search-suggestions
-                    document.getElementById("search-suggestions").innerHTML = this.responseText;
-                }
-            };
-            // Gửi yêu cầu POST với dữ liệu tìm kiếm
-            xhttp.open("POST", "search.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("search=" + searchInput);
-        } else {
-            // Nếu ô tìm kiếm trống, xóa kết quả gợi ý
-            document.getElementById("search-suggestions").innerHTML = "";
-        }
-    });
+    // Lấy từ khóa tìm kiếm từ input
+    var searchKeyword = document.getElementById("searchInput").value;
+
+    // Gửi yêu cầu tìm kiếm tới máy chủ (ở đây bạn có thể sử dụng AJAX hoặc Fetch API)
+
+    // Hiển thị kết quả tìm kiếm (ở đây bạn có thể sử dụng kết quả trả về từ máy chủ)
+});
 </script>

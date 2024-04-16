@@ -25,7 +25,9 @@ $products = getCartItems();
             foreach ($products as $product) {
               ?>
               <tr>
-                <td></td>
+                <td>
+                  <input type="checkbox" class="product-checkbox" onchange="updateTotalPrice(this)">
+                </td>
                 <td>
                   <div class="product-info-cart">
                     <img src="admincp/modules/images/uploads/<?php echo $product['product_image']; ?>"
@@ -44,6 +46,9 @@ $products = getCartItems();
                 <td id="total_<?php echo $product['variant_id']; ?>">
                   $<?php echo isset($_SESSION['carts'][$product['variant_id']]['quantity']) ? $_SESSION['carts'][$product['variant_id']]['quantity'] * $product['product_price'] : $product['product_price']; ?>
                 </td>
+                <td>
+                  <button class="delete-product-button" onclick="deleteProduct(this)">Delete</button>
+                </td>
               </tr>
               <?php
             }
@@ -54,7 +59,7 @@ $products = getCartItems();
 
         </tbody>
       </table>
-      <span class="total-price">Total price: $109.99</span>
+      <span class="total-price">Total price: $ </span>
     </section>
   </div>
   <div class="cart-buttons">
@@ -70,30 +75,93 @@ $products = getCartItems();
     const totalPrice = price * quantity;
     const totalCell = quantityInput.parentElement.nextElementSibling;
     totalCell.textContent = `$${totalPrice.toFixed(2)}`; // Format to 2 decimal places
-  }
+    calculateTotalPrice(); // Update total price when quantity changes
+}
 
   function calculateTotalPrice() {
     let total = 0;
-    const totalCells = document.querySelectorAll('.productcart tbody tr td#total');
+    const totalCells = document.querySelectorAll('.productcart tbody tr');
 
-    totalCells.forEach(cell => {
-      const totalPriceText = cell.textContent.trim().substring(1); // Loại bỏ ký tự '$' ở đầu và cắt khoảng trắng ở hai bên
+    totalCells.forEach(row => {
+      const checkbox = row.querySelector('.product-checkbox');
+      const totalPriceCell = row.querySelector('td#total_<?php echo $product['variant_id']; ?>');
+      const totalPriceText = totalPriceCell.textContent.trim().substring(1);
       const totalPrice = parseFloat(totalPriceText);
-      total += totalPrice;
+
+      if (checkbox.checked) {
+        total += totalPrice;
+      }
     });
 
     const totalPriceElement = document.querySelector('.total-price');
     totalPriceElement.textContent = `Total price: $${total.toFixed(2)}`;
   }
 
-  // Gọi hàm calculateTotalPrice khi có sự thay đổi số lượng của sản phẩm
+  // Call calculateTotalPrice() when the page loads to initially display the correct total price
+  calculateTotalPrice();
+
+  // Call updateTotal() when the quantity of a product changes
   document.querySelectorAll('.productcart tbody tr input[type="number"]').forEach(input => {
     input.addEventListener('change', function () {
-      updateTotal(this); // Cập nhật giá cho sản phẩm
-      calculateTotalPrice(); // Tính toán lại tổng số tiền
+      updateTotal(this); // Update price for the changed product
     });
   });
 
-  // Gọi hàm calculateTotalPrice khi thêm/xóa sản phẩm
-  calculateTotalPrice();
+  // Call calculateTotalPrice() when a product checkbox is changed
+  document.querySelectorAll('.productcart tbody tr input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+      calculateTotalPrice(); // Recalculate total price when a product is checked/unchecked
+    });
+  });
+  function updateTotal(quantityInput) {
+    // Code cập nhật giá trị sản phẩm khi số lượng thay đổi
+}
+
+function deleteProduct(button) {
+    const row = button.closest('tr'); // Lấy dòng (row) chứa nút "Delete" được click
+    const checkbox = row.querySelector('.product-checkbox');
+
+    // Lấy giá trị của ô tổng tiền hiện tại
+    let currentTotalPriceElement = document.querySelector('.total-price');
+    let currentTotalPriceText = currentTotalPriceElement.textContent.trim();
+    let currentTotalPrice = parseFloat(currentTotalPriceText.substring(currentTotalPriceText.indexOf('$') + 1));
+
+    if (checkbox.checked) {
+        // Nếu checkbox được chọn, thực hiện xóa sản phẩm
+        const totalPriceCell = row.querySelector('td:last-child'); // Lấy cell cuối cùng trong hàng
+        const totalPriceText = totalPriceCell.textContent.trim().substring(1);
+        const totalPrice = parseFloat(totalPriceText);
+
+        currentTotalPrice -= totalPrice; // Trừ giá tiền của sản phẩm khỏi tổng tiền hiện tại
+    }
+
+    // Xóa dòng sản phẩm khỏi DOM
+    row.remove();
+
+    // Kiểm tra nếu không có sản phẩm nào được chọn (checked), reset tổng tiền về 0.00
+    const anyProductChecked = document.querySelector('.productcart tbody tr input[type="checkbox"]:checked');
+    if (!anyProductChecked) {
+        currentTotalPrice = 0; // Reset tổng tiền về 0
+    }
+
+    // Cập nhật lại hiển thị tổng tiền sau khi xóa sản phẩm
+    currentTotalPriceElement.textContent = `Total price: $${currentTotalPrice.toFixed(2)}`;
+}
+
+// Gọi hàm deleteProduct(button) khi nút "Delete" được click
+document.querySelectorAll('.productcart tbody tr .delete-product-button').forEach(button => {
+    button.addEventListener('click', function () {
+        deleteProduct(this); // Xóa sản phẩm khi nút "Delete" được click
+    });
+});
+
+// Cập nhật tổng giá trị ban đầu khi trang được load
+calculateTotalPrice();
+
+// Gọi hàm calculateTotalPrice khi checkbox của sản phẩm thay đổi trạng thái
+document.querySelectorAll('.productcart tbody tr input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        calculateTotalPrice(); // Cập nhật tổng giá trị khi checkbox thay đổi trạng thái
+    });
+});
 </script>
