@@ -9,7 +9,7 @@
 <body>
     <div class="register-container">
       <h1>Registration</h1>
-      <form method="POST" action="pages/main/login/process.php">
+      <form method="POST" action="pages/main/login/register_process.php">
         <input type="text" name="fullname" placeholder="Full Name" class="input-field" required>
         <input type="email" name="email" placeholder="Enter Email" class="input-field" required>
         <input type="password" name="password" placeholder="Enter Password" class="input-field" required>
